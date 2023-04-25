@@ -1,11 +1,11 @@
 
 --Start of Global Scope---------------------------------------------------------
 
--- Have a counter for an increasing number inside the timer function
+-- Prepare a counter for an increasing number inside the Timer function
 local count = 0
 
--- Create a periodic timer and register the function "shoutHello" on it
--- The handle needs to be hold so that the timer runs
+-- Create a periodic Timer and register the function "shoutHello" on it
+-- The handle needs to be hold so that the Timer runs
 local tmr = Timer.create()
 Timer.setExpirationTime(tmr, 1000)
 Timer.setPeriodic(tmr, true)
@@ -15,13 +15,12 @@ Timer.setPeriodic(tmr, true)
 --Start of Function and Event Scope---------------------------------------------
 
 --Declaration of the 'main' function as an entry point for the event loop
---@main()
 local function main()
-  -- If timer handle is created sucessfully the starting timer
+  -- If timer handle is created sucessfully the starting Timer
   if tmr then
     Timer.start(tmr)
   else
-    print('Could not create the timer')
+    print('Could not create the Timer')
   end
 end
 --The following registration is part of the global scope which runs once after startup
@@ -34,7 +33,7 @@ local function shoutHello()
   -- This is just a direct print output useful for debugging purposes
   print('Hello World from script ' .. count)
 end
---Registration of the 'shoutHello' function to the timers'OnExpired' event
+--Registration of the 'shoutHello' function to the Timers'OnExpired' event
 Timer.register(tmr, 'OnExpired', shoutHello)
 
 --End of Function and Event Scope------------------------------------------------
